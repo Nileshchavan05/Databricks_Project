@@ -1,4 +1,10 @@
 
 
+
+1.Setup Databricks Production Environment
+2.Github Actions Setup Using YAML File
+3.Execute commands from the CLI to deploy  Databricks Notebooks
+4.Describe how Databricks Repos enables CI/CD workflows in Databricks
+
 Detail Workflow setup document form Github ,you can refer this URL for additional config setup,
 https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onpushpull_requestpull_request_targetpathspaths-ignore
