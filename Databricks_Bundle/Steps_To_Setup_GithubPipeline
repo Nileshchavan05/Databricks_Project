@@ -1,10 +1,57 @@
-
-
-
 1.Setup Databricks Production Environment
 2.Github Actions Setup Using YAML File
 3.Execute commands from the CLI to deploy  Databricks Notebooks
 4.Describe how Databricks Repos enables CI/CD workflows in Databricks
+
+
+walk through the code in this YAML file (.github/workflows/Databricks_CICD.yml) to define the CI CD pipeline.
+
+In the GitHub, we need to replace some of the values in this YAML file with the actual production environment
+that we have created in the Azure portal.The value for this key is going to be Databricks CD with personal access token.
+           DATABRICKS_HOST=<DatabricksWorkSpaceURL>
+           DATABRICKS_TOKEN=<PersonalAccessToken>
+   
+Environment to be deployed as a input parameter,Here either we can choose UAT or prod in the choice window that appear.
+     inputs:
+      environment:
+
+If you go to the view run logs in Githug, you can able to see this workflow is waiting for providing this input
+environment variable value.
+
+The permissions keyword in the YAML file is related to defining the permissions to the GitHub that can
+perform actions mentioned in this workflow.This permission allows the workflow to generate and write OpenID connect token.
+This OpenID connect token are used to authenticate with other cloud providers.
+    permissions:
+        id-token: write
+        contents: read
+  
+Under the jobs keyword, we can specify what is the specific job we are going to perform.
+
+starting our deploy process using the keyword deploy colon.
+
+We always need a machine to run the actual physical code deployment work.
+For that, we are going to use one of them virtual machine, which is got installed with Ubuntu Linux
+version.
+ubuntu-latest
+
+
+The checkout means it will create the bundle for all of the current code existing in this repository.
+ actions/checkout@v4 
+
+So we are using the action checkout to do this one,At the end of the checkout, the output will be stored inside the new folder got created under this
+ubuntu machine.
+
+We are going to use Databricks Import Notebook Library, available on the Microsoft, to deploy the code from git repository i
+nto our production Databricks workspace.
+
+Remote path is going to be the our default workspace user space in the Databricks workspace.That is the destination Databricks workspace.
+
+Now we completed this code to read the data from this GitHub repository and create the local copy of
+that code in this ubuntu machine.From this ubuntu machine, it's connecting to the destination Databricks using Databricks Host Value
+and Databricks Token value.
+
+will apply all of the code it checked out from this git repository into our destination Databricks workspace.
+
 
 Detail Workflow setup document form Github ,you can refer this URL for additional config setup,
 https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onpushpull_requestpull_request_targetpathspaths-ignore
