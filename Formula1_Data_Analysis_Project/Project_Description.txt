@@ -1,0 +1,15 @@
+We'll be doing a project on building a cloud data platform for reporting and doing analysis of the data from Formula 1 motorsport.
+
+In this project, we'll build a data lake in Azure by ingesting Formula 1 race data from an external API.We'll then transform this data as required for reporting
+and analysis purposes and make them available in our presentation layer.
+
+We'll then analyze the data for trends using Databricks and create the necessary dashboards.
+
+We'll also make the data available for BI reporting,and I'll demonstrate how to access this data from Power BI.
+All of these process will be scheduled and triggered via Azure Data Factory pipelines.
+
+We'll then go through the new and emerging data lakehouse architecture
+and convert our solution to create a data lakehouse using Delta Lake.
+
+Along the way, we'll do some interesting analysis on the data to identify the most dominant drivers
+and the teams in the history of Formula 1.
